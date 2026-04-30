@@ -29,6 +29,8 @@ import os #Uses "pip install python-dotenv" to read the .env file for the bot to
 #Load environment variables (bot token)
 load_dotenv() #Comment out if you wanna use plaintext
 TOKEN = os.getenv("TOKEN")
+# variable for portrait mode. Not sure the best way to publish this but whatever.
+PORTRAIT = True
 
 image_types = ["png", "jpeg", "gif", "jpg", "mp4", "mov"] #You can add more attachments/formats here to be saved.
 
@@ -50,9 +52,12 @@ def to_thread(func: typing.Callable) -> typing.Coroutine:
 @to_thread
 def updateInky(file):
     print("Submitting image to inky")
-    gpio.set_value(led, Value.ACTIVE)#LED on when reciving  
+    gpio.set_value(led, Value.ACTIVE)#LED on when receiving  
     openedImage = Image.open(file)
     im = openedImage.convert('RGB') #sanitizes the image (removes gif frames)
+    #Time to add portrait support. We need to rotate before scaling 
+    if PORTRAIT:
+        im = im.rotate(90,expand=1)
     resizedimage = im.resize(inky.resolution)
     resizedimage = ImageOps.pad(im, inky.resolution, color="#fff")
     try:
