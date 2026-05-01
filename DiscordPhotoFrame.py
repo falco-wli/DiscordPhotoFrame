@@ -25,6 +25,7 @@ import re
 
 # Add an ".env" file with TOKEN=your_token_here, or just plaintext it lol
 import os #Uses "pip install python-dotenv" to read the .env file for the bot token.
+from dotenv import load_dotenv
 
 #Load environment variables (bot token)
 load_dotenv() #Comment out if you wanna use plaintext
