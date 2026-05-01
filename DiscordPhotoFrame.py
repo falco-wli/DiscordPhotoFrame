@@ -62,9 +62,9 @@ def updateInky(file):
     resizedimage = im.resize(inky.resolution)
     resizedimage = ImageOps.pad(im, inky.resolution, color="#fff")
     try:
-        inky.set_image(resizedimage, saturation=1.0)
+        inky.set_image(resizedimage, saturation=0.6)
     except TypeError:
-        inky.set_image(resizedimage, saturation=1.0)
+        inky.set_image(resizedimage, saturation=0.6)
     inky.show()
     gpio.set_value(led, Value.INACTIVE)#LED off when done
 
