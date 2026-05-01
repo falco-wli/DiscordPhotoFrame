@@ -29,7 +29,7 @@ from dotenv import load_dotenv
 
 #Load environment variables (bot token)
 load_dotenv() #Comment out if you wanna use plaintext
-TOKEN = os.getenv("TOKEN")
+TOKEN = os.getenv('TOKEN')
 # variable for portrait mode. Not sure the best way to publish this but whatever.
 PORTRAIT = True
 
