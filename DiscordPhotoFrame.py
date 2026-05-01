@@ -80,6 +80,8 @@ class MyClient(discord.Client):
         print("Reaction")
         if str(reaction.emoji) == "⭐": #checking the emoji
             print("Found Star Reaction")
+            if not os.path.exists('/attachments'):
+                os.makedirs('/attachments')
             if "https://images-ext-1.discordapp.net" in message.content or "https://tenor.com/view/" in message.content:
                 self.image = message.content #link to tenor gif - not formatted
                 print("Found tenor link...")
